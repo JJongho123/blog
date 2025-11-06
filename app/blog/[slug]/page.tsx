@@ -1,20 +1,25 @@
-import Link from 'next/link';
-import { Separator } from '@/components/ui/separator';
-import { Badge } from '@/components/ui/badge';
-import { CalendarDays, User } from 'lucide-react';
-import { ChevronLeft, ChevronRight } from 'lucide-react';
-import { Card, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
-import { getPostBySlug } from '@/lib/notion';
-import { formatDate } from '@/lib/date';
-import { MDXRemote } from 'next-mdx-remote/rsc';
-import remarkGfm from 'remark-gfm';
-import rehypeSanitize from 'rehype-sanitize';
-import rehypePrettyCode from 'rehype-pretty-code';
-import rehypeSlug from 'rehype-slug';
-import { compile } from '@mdx-js/mdx';
-import withSlugs from 'rehype-slug';
-import withToc from '@stefanprobst/rehype-extract-toc';
-import withTocExport from '@stefanprobst/rehype-extract-toc/mdx';
+import Link from "next/link";
+import { Separator } from "@/components/ui/separator";
+import { Badge } from "@/components/ui/badge";
+import { CalendarDays, User } from "lucide-react";
+import { ChevronLeft, ChevronRight } from "lucide-react";
+import {
+  Card,
+  CardHeader,
+  CardTitle,
+  CardDescription,
+} from "@/components/ui/card";
+import { getPostBySlug } from "@/lib/notion";
+import { formatDate } from "@/lib/date";
+import { MDXRemote } from "next-mdx-remote/rsc";
+import remarkGfm from "remark-gfm";
+import rehypeSanitize from "rehype-sanitize";
+import rehypePrettyCode from "rehype-pretty-code";
+import rehypeSlug from "rehype-slug";
+import { compile } from "@mdx-js/mdx";
+import withSlugs from "rehype-slug";
+import withToc from "@stefanprobst/rehype-extract-toc";
+import withTocExport from "@stefanprobst/rehype-extract-toc/mdx";
 
 interface TocEntry {
   value: string;
@@ -22,8 +27,6 @@ interface TocEntry {
   id?: string;
   children?: Array<TocEntry>;
 }
-
-type Toc = Array<TocEntry>;
 
 function TableOfContentsLink({ item }: { item: TocEntry }) {
   return (
@@ -74,7 +77,9 @@ export default async function BlogPost({ params }: BlogPostProps) {
           <div className="space-y-4">
             <div className="space-y-2">
               <div className="flex gap-2">
-                {post.tags?.map((tag) => <Badge key={tag}>{tag}</Badge>)}
+                {post.tags?.map((tag) => (
+                  <Badge key={tag}>{tag}</Badge>
+                ))}
               </div>
               <h1 className="text-4xl font-bold">{post.title}</h1>
             </div>
@@ -123,7 +128,8 @@ export default async function BlogPost({ params }: BlogPostProps) {
                     <span>시작하기</span>
                   </CardTitle>
                   <CardDescription className="line-clamp-2">
-                    Next.js를 시작하는 방법부터 프로젝트 구조, 기본 설정까지 상세히 알아봅니다.
+                    Next.js를 시작하는 방법부터 프로젝트 구조, 기본 설정까지
+                    상세히 알아봅니다.
                   </CardDescription>
                 </CardHeader>
               </Card>
@@ -137,8 +143,8 @@ export default async function BlogPost({ params }: BlogPostProps) {
                     <ChevronRight className="h-4 w-4" />
                   </CardTitle>
                   <CardDescription className="line-clamp-2">
-                    Next.js의 고급 기능들을 활용하여 더 나은 웹 애플리케이션을 만드는 방법을
-                    소개합니다.
+                    Next.js의 고급 기능들을 활용하여 더 나은 웹 애플리케이션을
+                    만드는 방법을 소개합니다.
                   </CardDescription>
                 </CardHeader>
               </Card>
@@ -150,7 +156,9 @@ export default async function BlogPost({ params }: BlogPostProps) {
             <div className="bg-muted/60 space-y-4 rounded-lg p-6 backdrop-blur-sm">
               <h3 className="text-lg font-semibold">목차</h3>
               <nav className="space-y-3 text-sm">
-                {data?.toc?.map((item) => <TableOfContentsLink key={item.id} item={item} />)}
+                {data?.toc?.map((item) => (
+                  <TableOfContentsLink key={item.id} item={item} />
+                ))}
               </nav>
             </div>
           </div>
