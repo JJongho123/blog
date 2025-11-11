@@ -1,5 +1,5 @@
-import type { NextConfig } from 'next';
-import createMDX from '@next/mdx';
+import type { NextConfig } from "next";
+import createMDX from "@next/mdx";
 // import remarkGfm from 'remark-gfm';
 const nextConfig: NextConfig = {
   /* config options here */
@@ -9,17 +9,20 @@ const nextConfig: NextConfig = {
   images: {
     remotePatterns: [
       {
-        hostname: 'picsum.photos',
+        hostname: "picsum.photos",
       },
       {
-        hostname: 'images.unsplash.com',
+        hostname: "images.unsplash.com",
       },
       {
-        hostname: 'prod-files-secure.s3.us-west-2.amazonaws.com',
+        hostname: "prod-files-secure.s3.us-west-2.amazonaws.com",
+      },
+      {
+        hostname: "www.notion.so",
       },
     ],
   },
-  pageExtensions: ['ts', 'tsx', 'js', 'jsx', 'mdx', 'md'],
+  pageExtensions: ["ts", "tsx", "js", "jsx", "mdx", "md"],
 };
 
 const withMDX = createMDX({
