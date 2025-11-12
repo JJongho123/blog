@@ -19,6 +19,7 @@ export default async function Home({ searchParams }: HomeProps) {
   const selectedSort = sort || "latest";
 
   const tags = getTags();
+  console.log(tags);
   const postsPromise = getPublishedPosts({
     tag: selectedTag,
     sort: selectedSort,

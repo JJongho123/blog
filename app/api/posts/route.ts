@@ -6,7 +6,7 @@ export async function GET(request: NextRequest) {
   const tag = searchParams.get("tag") || undefined;
   const sort = searchParams.get("sort") || undefined;
   const startCursor = searchParams.get("startCursor") || undefined;
-  const pageSize = parseInt(searchParams.get("pageSize") || "2") || undefined;
+  const pageSize = parseInt(searchParams.get("pageSize") || "2");
 
   const response = await getPublishedPosts({
     tag,
