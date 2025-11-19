@@ -121,7 +121,6 @@ export const getPublishedPosts = unstable_cache(
     pageSize = 2,
     startCursor,
   }: GetPublishedPostsParams = {}): Promise<GetPublishedPostsResponse> => {
-    console.log("getPublishedPosts: ", tag, sort, pageSize, startCursor);
     const response = await notion.databases.query({
       database_id: process.env.NOTION_DATABASE_ID!,
       filter: {
