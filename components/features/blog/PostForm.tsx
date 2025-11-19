@@ -7,7 +7,6 @@ import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 import { Loader2 } from "lucide-react";
 import { useActionState } from "react";
-import { useEffect } from "react";
 import { createPostAction } from "@/app/actions/blog";
 import { Alert, AlertDescription } from "@/components/ui/alert";
 
@@ -22,10 +21,6 @@ export function PostForm() {
     },
   });
 
-  // state 변경 시 콘솔에 출력
-  useEffect(() => {
-    console.log("State:", state);
-  }, [state]);
 
   return (
     <form action={formAction}>

@@ -1,19 +1,20 @@
 "use client";
 import Giscus from "@giscus/react";
-
+import { useTheme } from "next-themes";
 export default function GiscusComments() {
+  const { theme } = useTheme();
   return (
     <Giscus
-      repo="JJongho123/blog"
-      repoId="R_kgDOQBmeEA"
+      repo="gymcoding/notion-blog-nextjs-giscus"
+      repoId="R_kgDOOHw4QQ"
       category="Announcements"
-      categoryId="DIC_kwDOQBmeEM4CxvzN"
+      categoryId="DIC_kwDOOHw4Qc4Cn9v2"
       mapping="pathname"
       strict="0"
       reactionsEnabled="1"
       emitMetadata="0"
       inputPosition="top"
-      theme="preferred_color_scheme"
+      theme={theme === "dark" ? "dark" : "light"}
       lang="ko"
     />
   );
