@@ -2,7 +2,7 @@ import Link from "next/link";
 import { Separator } from "@/components/ui/separator";
 import { Badge } from "@/components/ui/badge";
 import { CalendarDays, User } from "lucide-react";
-import { getPostBySlug } from "@/lib/notion";
+import { getPostBySlug, getPublishedPosts } from "@/lib/notion";
 import { formatDate } from "@/lib/date";
 import { MDXRemote } from "next-mdx-remote/rsc";
 import remarkGfm from "remark-gfm";
@@ -20,6 +20,15 @@ interface TocEntry {
   id?: string;
   children?: Array<TocEntry>;
 }
+
+export async function generateStaticParams() {
+  const { posts } = await getPublishedPosts();
+  return posts.map((post) => ({
+    slug: post.slug,
+  }));
+}
+
+export const revalidate = 60;
 
 function TableOfContentsLink({ item }: { item: TocEntry }) {
   return (
