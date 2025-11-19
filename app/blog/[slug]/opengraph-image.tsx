@@ -14,10 +14,11 @@ export const contentType = "image/png";
 export default async function OgImage({
   params,
 }: {
-  params: { slug: string };
+  params: Promise<{ slug: string }>;
 }) {
   // 게시물 데이터 가져오기
-  const { post } = await getPostBySlug(params.slug);
+  const { slug } = await params;
+  const { post } = await getPostBySlug(slug);
 
   // 게시물이 없는 경우 기본 이미지 반환
   if (!post) {
